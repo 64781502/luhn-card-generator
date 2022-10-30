@@ -1,2 +1,3 @@
-# luhn-card-generator
-fake card generator
+# Luhn card generator
+
+### generates a fake card number to pass luhn check
