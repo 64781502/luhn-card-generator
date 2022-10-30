@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Card Generator</title>
+</head>
+<body>
+    <div class="cc">
+        <span id="card-number" class="cc-number"></span>
+    </div> 
+    <h2 id="comp" class="comp blur"></span>
+
+    <script>
+        let x = false;
+        card = ['3', '4', '5', '6'];
+        while (x == false) {
+            generator(card[Math.floor(Math.random()*card.length)]);
+        }
+        function generator(q) {
+            let _n = Math.floor(Math.random() * 1e15 + 1e14);
+            let n = q + _n;
+            const firstN = (arr, nth) => arr.filter((e, i) => i % nth === nth - 2);
+            const sedondN = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
+            var toArray = num => Number(num);
+            var l = Array.from(String(n), toArray);
+            let a = firstN(l, 2);
+            let b = sedondN(l, 2);
+            let _a = double(a);
+            let __a = [];
+            _a.forEach(check);
+            if (n.length == 16) {
+                if (String(__a.reduce((a, b) => a + b, 0) + b.reduce((a, b) => a + b, 0)).endsWith('0')) {
+                    document.getElementById("card-number").innerHTML = n.match(/.{1,4}/g).join(' ');
+                    switch (q) {
+                        case '3':
+                            document.body.style.backgroundColor = "rgb(206,206,206)";
+                            document.getElementById("comp").innerHTML = "American Express";
+                            break;
+                        case '4':
+                            document.body.style.backgroundColor = "rgb(20,52,203)";
+                            document.getElementById("comp").innerHTML = "Visa";
+                            break;
+                        case '5':
+                            document.body.style.backgroundColor = "rgb(247,158,27)";
+                            document.getElementById("comp").innerHTML = "MasterCard";
+                            break;
+                        case '6':
+                            document.body.style.backgroundColor = "rgb(229,92,32)";
+                            document.getElementById("comp").innerHTML = "Discover";
+                    }
+                    x = true;
+                }
+            }
+            function check(item) {
+                if (item > 9) {
+                    __a.push(item - 9);
+                } else {
+                    __a.push(item)
+                }
+            }
+        }
+        function double(arr){
+            let newArr = [];
+            for(let i = 0; i < arr.length; i++){
+                newArr.push(arr[i] * 2);
+            }
+            return newArr;
+        }
+    </script>
+</body>
+</html>
