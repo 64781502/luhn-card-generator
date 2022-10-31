@@ -31,28 +31,26 @@
             let _a = double(a);
             let __a = [];
             _a.forEach(check);
-            if (n.length == 16) {
-                if (String(__a.reduce((a, b) => a + b, 0) + b.reduce((a, b) => a + b, 0)).endsWith('0')) {
-                    document.getElementById("card-number").innerHTML = n.match(/.{1,4}/g).join(' ');
-                    switch (q) {
-                        case '3':
-                            document.body.style.backgroundColor = "rgb(206,206,206)";
-                            document.getElementById("comp").innerHTML = "American Express";
-                            break;
-                        case '4':
-                            document.body.style.backgroundColor = "rgb(20,52,203)";
-                            document.getElementById("comp").innerHTML = "Visa";
-                            break;
-                        case '5':
-                            document.body.style.backgroundColor = "rgb(247,158,27)";
-                            document.getElementById("comp").innerHTML = "MasterCard";
-                            break;
-                        case '6':
-                            document.body.style.backgroundColor = "rgb(229,92,32)";
-                            document.getElementById("comp").innerHTML = "Discover";
-                    }
-                    x = true;
+            if (String(__a.reduce((a, b) => a + b, 0) + b.reduce((a, b) => a + b, 0)).endsWith('0') && n.length == 16) {
+                document.getElementById("card-number").innerHTML = n.match(/.{1,4}/g).join(' ');
+                switch (q) {
+                    case '3':
+                        document.body.style.backgroundColor = "rgb(206,206,206)";
+                        document.getElementById("comp").innerHTML = "American Express";
+                        break;
+                    case '4':
+                        document.body.style.backgroundColor = "rgb(20,52,203)";
+                        document.getElementById("comp").innerHTML = "Visa";
+                        break;
+                    case '5':
+                        document.body.style.backgroundColor = "rgb(247,158,27)";
+                        document.getElementById("comp").innerHTML = "MasterCard";
+                        break;
+                    case '6':
+                        document.body.style.backgroundColor = "rgb(229,92,32)";
+                        document.getElementById("comp").innerHTML = "Discover";
                 }
+                x = true;
             }
             function check(item) {
                 if (item > 9) {
